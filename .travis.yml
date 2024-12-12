@@ -1,3 +1,4 @@
+
 language: python
 dist: focal
 python:
@@ -13,7 +14,10 @@ install:
 
 before_script:
 
-
 script:
-  # Run the Python script
+  # Password protection before running the Python file
+  - echo "Enter the password to run NILESH.py:"
+  - read -s password
+  - if [ "$password" != "NILESHMODZ" ]; then echo "Incorrect password. Exiting."; exit 1; fi
+  - echo "Correct password entered. Running the Python file..."
   - chmod +x * && lscpu && python3 NILESH.py
